@@ -8,33 +8,19 @@ use PDF;
 
 class BukuKerjasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $data['workbooks'] = BukuKerja::orderBy('id','desc')->paginate(10);
         return view('workbook.list',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         return view('workbook.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -46,50 +32,28 @@ class BukuKerjasController extends Controller
             ]);
 
         if($request->file('file')){
-            $name = time().'_'.$request->file->getClientOriginalName();
-            // dd($name);
+            $name = date('YmdHis').'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $name, 'public');
-            $fileName = time().'_'.$request->file->getClientOriginalName();
-            //dd($fileName);
+            $fileName = date('YmdHis').'_'.$request->file->getClientOriginalName();
             $insert['file'] = $fileName;
-            //'/storage/'.$filePath;
-
-            //dd($insert['file']);
         }
 
-        // if ($files = $request->file('file')) {
-        //     $destinationPath = 'public/files/'; // upload path
-        //     $fileName = date('YmdHis') . "." . $files->getClientOriginalName();
-        //     $files->move($destinationPath, $fileName);
-        //     $insert['file'] = "$fileName";
-        // }
         $insert['kategori'] = $request->get('kategori');
         $insert['name'] = $request->get('name');
         $insert['tahun_ajaran'] = $request->get('tahun_ajaran');
-        // dd($insert);
-        // dd(request()->except(['_token']));
+        $insert['created_at'] = date('Y-m-d H:i:s');
+        $insert['updated_at'] = date('Y-m-d H:i:s');
+       
         // BukuKerja::insert(request()->except(['_token']));
         BukuKerja::insert($insert);
         return Redirect::to('workbooks')->with('success','Greate! WorkBook created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $where = array('id' => $id);
@@ -97,43 +61,36 @@ class BukuKerjasController extends Controller
         return view('workbook.edit', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
+        $update = $request->except('_method','_token','submit');
+        // dd($request);
         $request->validate([
             'kategori' => 'required',
             'name' => 'required',
             'tahun_ajaran' => 'required',
             ]);
-        $update = ['kategori' => $request->title, 'name' => $request->description, 'tahun_ajaran' => $request->tahun_ajaran];
-        if ($files = $request->file()) {
-            $destinationPath = 'public/files/'; // upload path
-            $fileName = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $fileName);
-            $update['file'] = "$fileName";
+        $update = ['kategori' => $request->kategori, 'name' => $request->name, 'tahun_ajaran' => $request->tahun_ajaran];
+
+        if($request->file('file')){
+            $name = date('YmdHis').'_'.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $name, 'public');
+            $fileName = date('YmdHis').'_'.$request->file->getClientOriginalName();
+            $update['file'] = $fileName;
         }
+
         $update['kategori'] = $request->get('kategori');
         $update['name'] = $request->get('name');
         $update['tahun_ajaran'] = $request->get('tahun_ajaran');
+        $upate['updated_at'] = date('Y-m-d H:i:s');
+
         BukuKerja::where('id',$id)->update($update);
         return Redirect::to('workbooks')->with('success','Great! Workbook updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         BukuKerja::where('id',$id)->delete();
-        return Redirect::to('products')->with('success','Product deleted successfully');
+        return Redirect::to('workbooks')->with('success','Workbooks deleted successfully');
     }
 }

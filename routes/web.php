@@ -23,5 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('logout', 'AuthController@logout')->name('logout');
     Route::resource('workbooks', 'BukuKerjasController');
- 
+    Route::put('/workbooks/{id}/edit', 'BukuKerjasController@update');
+    Route::resource('classes', 'ClassesController');
+    Route::resource('courses', 'CoursesController');
 });

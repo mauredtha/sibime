@@ -8,10 +8,10 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Title</th>
-                    <th>Product Code</th>
-                    <th>Description</th>
-                    <th>Created at</th>
+                    <th>Kategori</th>
+                    <th>Name</th>
+                    <th>File</th>
+                    <th>Tahun Ajaran</th>
                     <td colspan="2">Action</td>
                 </tr>
             </thead>
@@ -21,7 +21,10 @@
             <td>{{ $workbook->id }}</td>
             <td>{{ $workbook->kategori }}</td>
             <td>{{ $workbook->name }}</td>
-            <td>{{ $workbook->file }}</td>
+            <td>@if($workbook->file)
+                <a href="{{ Storage::url('uploads/'.$workbook->file) }}" target="_blank">{{ $workbook->file }}</a>
+                @endif
+            </td>
             <td>{{ $workbook->tahun_ajaran }}</td>
             <td>{{ date('Y-m-d', strtotime($workbook->created_at)) }}</td>
             <td><a href="{{ route('workbooks.edit',$workbook->id)}}" class="btn btn-primary">Edit</a></td>

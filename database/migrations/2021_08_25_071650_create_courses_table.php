@@ -18,7 +18,8 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('level');
             $table->integer('kkm');
-            $table->integer('id_guru');
+            $table->integer('kode_guru');
+            $table->string('nama_guru');
             $table->string('tahun_ajaran');
             $table->timestamps();
         });
