@@ -14,8 +14,8 @@
     .container{
         background: #ff9b00;
         padding: 4%;
-        border-top-left-radius: 0.5rem;
-        border-bottom-left-radius: 0.5rem;
+        border-top-left-radius: 0.2rem;
+        border-bottom-left-radius: 0.2rem;
     }
 </style>
 </head>
