@@ -1,6 +1,5 @@
 @extends('classes.layout')
 @section('content')
-<h2 style="margin-top: 12px;" class="text-center">Edit Classes</a></h2>
 <br>
 <form action="{{ route('classes.update', $class_info->id) }}" method="POST" name="update_workbook" enctype="multipart/form-data">
 {{ csrf_field() }}

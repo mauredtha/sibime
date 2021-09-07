@@ -1,7 +1,5 @@
 @extends('classes.layout')
 @section('content')
-<h2 style="margin-top: 12px;" class="text-center">Add Classes</a></h2>
-<br>
 <form action="{{ route('classes.store') }}" method="POST" name="add_classes">
 {{ csrf_field() }}
     <div class="row">

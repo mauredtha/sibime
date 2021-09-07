@@ -1,7 +1,10 @@
 @extends('classes.layout')
 @section('content')
-<a href="{{ route('classes.create') }}" class="btn btn-success mb-2">Add</a> 
-<br>
+
+<span class="navbar-right panel-button-tab-right">
+    <a class="btn btn-md btn-default" href="{{ route('classes.create') }}" >Add</a>
+</span>
+<br><br>
 <div class="row">
     <div class="col-12">
         <table class="table table-bordered" id="laravel_crud">
@@ -21,7 +24,6 @@
             <td>{{ $class->level }}</td>
             <td>{{ $class->name }}</td>
             <td>{{ $class->tahun_ajaran }}</td>
-            <td>{{ date('Y-m-d', strtotime($class->created_at)) }}</td>
             <td><a href="{{ route('classes.edit',$class->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
             <form action="{{ route('classes.destroy', $class->id)}}" method="post">
