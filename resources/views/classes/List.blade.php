@@ -1,6 +1,5 @@
 @extends('classes.layout')
 @section('content')
-
 <span class="navbar-right panel-button-tab-right">
     <a class="btn btn-md btn-default" href="{{ route('classes.create') }}" >Add</a>
 </span>

@@ -1,6 +1,5 @@
 @extends('workbook.layout')
 @section('content')
-<h2 style="margin-top: 12px;" class="text-center">Edit Workbook</a></h2>
 <br>
 <form action="{{ route('workbooks.update', $workbook_info->id) }}" method="POST" name="update_workbook" enctype="multipart/form-data">
 {{ csrf_field() }}

@@ -1,6 +1,5 @@
 @extends('workbook.layout')
 @section('content')
-<h2 style="margin-top: 12px;" class="text-center">Add WorkBook</a></h2>
 <br>
 <form action="{{ route('workbooks.store') }}" method="POST" name="add_workbook" enctype="multipart/form-data">
 {{ csrf_field() }}

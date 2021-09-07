@@ -3,8 +3,6 @@
 <?php
 ini_set('max_execution_time', 3600);
 ?>
-<h2 style="margin-top: 12px;" class="text-center">Add Course</a></h2>
-<br>
 <form action="{{ route('courses.store') }}" method="POST" name="add_courses" enctype="multipart/form-data">
 {{ csrf_field() }}
     <div class="row">
