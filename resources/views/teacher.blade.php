@@ -70,33 +70,33 @@
 			<div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">120</div>
-							<div class="text-muted">Buku Kerja 1</div>
+						<div class="row no-padding"><em class="fa fa-xl fa-book color-blue"></em>
+							<div class="large">{{$buku_kerja_i}}</div>
+							<div class="text-muted"><a href="{{ route('buku_kerja_satu') }}">Buku Kerja 1</a></div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-blue panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
-							<div class="large">52</div>
-							<div class="text-muted">Buku Kerja 2</div>
+						<div class="row no-padding"><em class="fa fa-xl fa-book color-orange"></em>
+							<div class="large">{{$buku_kerja_ii}}</div>
+							<div class="text-muted"><a href="{{ route('buku_kerja_dua') }}">Buku Kerja 2</a></div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">Buku Kerja 3</div>
+						<div class="row no-padding"><em class="fa fa-xl fa-book color-teal"></em>
+							<div class="large">{{$buku_kerja_iii}}</div>
+							<div class="text-muted"><a href="{{ route('buku_kerja_tiga') }}">Buku Kerja 3</a></div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
-							<div class="large">25.2k</div>
-							<div class="text-muted">Buku Kerja 4</div>
+						<div class="row no-padding"><em class="fa fa-xl fa-book color-red"></em>
+							<div class="large">{{$buku_kerja_iv}}</div>
+							<div class="text-muted"><a href="{{ route('buku_kerja_empat') }}">Buku Kerja 4</a></div>
 						</div>
 					</div>
 				</div>

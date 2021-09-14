@@ -93,4 +93,28 @@ class BukuKerjasController extends Controller
         BukuKerja::where('id',$id)->delete();
         return Redirect::to('workbooks')->with('success','Workbooks deleted successfully');
     }
+
+    public function buku_kerja_satu(){
+        
+        $data['workbooks'] = BukuKerja::where('kategori','Buku Kerja I')->orderBy('id','desc')->get();
+        return view('workbook.satu',$data);
+    }
+
+    public function buku_kerja_dua(){
+        
+        $data['workbooks'] = BukuKerja::where('kategori','Buku Kerja II')->orderBy('id','desc')->get();
+        return view('workbook.dua',$data);
+    }
+
+    public function buku_kerja_tiga(){
+        
+        $data['workbooks'] = BukuKerja::where('kategori','Buku Kerja III')->orderBy('id','desc')->get();
+        return view('workbook.tiga',$data);
+    }
+
+    public function buku_kerja_empat(){
+        
+        $data['workbooks'] = BukuKerja::where('kategori','Buku Kerja IV')->orderBy('id','desc')->get();
+        return view('workbook.empat',$data);
+    }
 }

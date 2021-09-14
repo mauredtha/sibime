@@ -126,6 +126,8 @@ class CoursesController extends Controller
 
         $teachers = User::where('role','Guru')->get();
 
+        //dd($teachers);exit;
+
         $compactData=array('teachers', 'data');
         return View::make('course.edit', compact($compactData));
         //return view('courses.edit', $data);

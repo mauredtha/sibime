@@ -80,16 +80,18 @@
             </div>
         </div>
 
-        <?php for($i=2; $i <= 5; $i++) {?>
+        <?php for($i=2; $i <= 5; $i++) {
+            $guru = 'kode_guru'.$i;
+        ?>
         <div class="col-md-12">
             <div class="form-group">
                 <strong>Guru {{$i}}</strong>
                 <select name="kode_guru{{$i}}" class="form-control">
                     <?php foreach ($teachers as $key => $value) { ?>
-                        <option value="{{ $value->kode }}" {{ $value->kode == $data['course_info']->kode_guru.$i ? 'selected' : '' }}>{{ $value->name }}</option>
+                        <option value="{{ $value->kode }}" {{ $value->kode == $data['course_info']->$guru ? 'selected' : '' }}>{{ $value->name }}</option>
                     <?php } ?>
                 </select>
-                @if(!$data['course_info']->kode_guru.$i)
+                @if(!$data['course_info']->$guru)
                 <span class="text-danger">{{ $errors->first('kode_guru'.$i) }}</span>
                 @endif
             </div>
