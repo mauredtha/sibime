@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('buku_kerja_tiga', 'BukuKerjasController@buku_kerja_tiga')->name('buku_kerja_tiga');
     Route::get('buku_kerja_empat', 'BukuKerjasController@buku_kerja_empat')->name('buku_kerja_empat');
     Route::resource('classes', 'ClassesController');
+
     Route::resource('courses', 'CoursesController');
+    Route::get('komponen/{id}', 'CoursesController@showKomponen')->name('komponen');
+
     Route::resource('users', 'AuthController');
 });

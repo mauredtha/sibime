@@ -6,7 +6,7 @@
         <table class="table table-bordered" id="laravel_crud">
             <thead>
                 <tr>
-                    <th style="text-align:center    ">{{$workbooks[0]->kategori}}</th>
+                    <th style="text-align:center;">{{$workbooks[0]->kategori}}</th>
                 </tr>
             </thead>
             <tbody>

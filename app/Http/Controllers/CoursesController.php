@@ -210,4 +210,13 @@ class CoursesController extends Controller
         Courses::where('id',$id)->delete();
         return Redirect::to('courses')->with('success','Courses deleted successfully');
     }
+
+    public function showKomponen($id)
+    {
+        $where = array('id' => $id);
+        $data['course_info'] = Courses::where($where)->first();
+
+        $compactData=array('data');
+        return View::make('course.komponen', compact($compactData));
+    }
 }
