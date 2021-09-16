@@ -39,5 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('grades', 'NilaisController');
     Route::get('list_nilai', 'NilaisController@listNilai')->name('list_nilai');
 
+    Route::get('absensi', 'AbsencesController@absensi')->name('absensi');
+    Route::get('absensi_detail/{id}', 'AbsencesController@absensi_detail')->name('absensi_detail');
+
     Route::resource('users', 'AuthController');
 });
