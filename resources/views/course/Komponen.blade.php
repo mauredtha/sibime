@@ -24,7 +24,7 @@
             <?php }?>
             <tr>
                 <td>
-                    <a href="{{}}">Materi Belajar</a>
+                    <a href="{{ route('list_materi', $data['course_info']['id']) }}">Materi Belajar</a>
                 </td>
             </tr>
             </tbody>

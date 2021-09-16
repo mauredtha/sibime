@@ -33,5 +33,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('courses', 'CoursesController');
     Route::get('komponen/{id}', 'CoursesController@showKomponen')->name('komponen');
 
+    Route::resource('subjects', 'MaterisController');
+    Route::get('list_materi/{id}', 'MaterisController@listMateri')->name('list_materi');
+
+    Route::resource('grades', 'NilaisController');
+    Route::get('list_nilai', 'NilaisController@listNilai')->name('list_nilai');
+
     Route::resource('users', 'AuthController');
 });

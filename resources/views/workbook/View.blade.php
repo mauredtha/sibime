@@ -41,7 +41,7 @@
 		</div>
 		<div class="divider"></div>
 		<ul class="nav menu">
-        <li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+        <li class="active"><a href="{{ route('home') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="{{ route('classes.index') }}"><em class="fa fa-calendar">&nbsp;</em> Kelas</a></li>
 			<li><a href="{{ route('courses.index') }}"><em class="fa fa-bar-chart">&nbsp;</em> Mata Pelajaran</a></li>
 			<li><a href="{{ route('workbooks.index') }}"><em class="fa fa-bar-chart">&nbsp;</em> Nilai</a></li>

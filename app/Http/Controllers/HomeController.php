@@ -11,6 +11,8 @@ use Redirect;
 use App\BukuKerja;
 use App\Courses;
 use App\Classes;
+use App\Materis;
+use App\Nilais;
 
 class HomeController extends Controller
 {
@@ -28,10 +30,10 @@ class HomeController extends Controller
             return View::make('teacher', compact($compactData));
         }else {
 
-            $materi = BukuKerja::where('kategori','Buku Kerja I')->count();
-            $latihan = BukuKerja::where('kategori','Buku Kerja II')->count();
-            $uh = BukuKerja::where('kategori','Buku Kerja III')->count();
-            $remed = BukuKerja::where('kategori','Buku Kerja IV')->count();
+            $materi = Materis::where('id_class', Auth::user()->class_id)->whereDate('deadline_materi', '>=', date('Y-m-d'))->whereNotNull('materi')->count();
+            $latihan = Materis::where(['id_class' => Auth::user()->class_id])->whereDate('deadline_latihan', '>=', date('Y-m-d'))->whereNotNull('latihan')->count();
+            $uh = Materis::where(['id_class' => Auth::user()->class_id])->whereDate('deadline_uh', '>=', date('Y-m-d'))->whereNotNull('ulangan_harian')->count();
+            $remed = Materis::where(['id_class' => Auth::user()->class_id])->whereDate('deadline_remidi', '>=', date('Y-m-d'))->whereNotNull('remidial')->count();
 
             $class = Classes::where('id',Auth::user()->class_id)->get();
             
@@ -41,7 +43,7 @@ class HomeController extends Controller
 
             //dd($data['courses']);
 
-            $compactData=array('materi', 'latihan', 'uh', 'remed', 'data');
+            $compactData=array('materi', 'latihan', 'uh', 'remed', 'data', 'class');
             return View::make('siswa', compact($compactData));
         }
         
