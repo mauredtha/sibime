@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+
 use App\Classes;
+use App\Courses;
+
 use Illuminate\Http\Request;
 use Redirect;
 
@@ -10,7 +15,19 @@ class ClassesController extends Controller
     
     public function index()
     {
-        $data['classes'] = Classes::orderBy('id','desc')->paginate(10);
+        if(Auth::user()->role == 'Admin'){
+            $data['classes'] = Classes::orderBy('id','desc')->paginate(10);
+        }else{
+            $courses = Courses::where('kode_guru', '=', Auth::user()->kode)->orWhere('kode_guru2', '=', Auth::user()->kode)->orWhere('kode_guru3', '=', Auth::user()->kode)->orWhere('kode_guru4', '=', Auth::user()->kode)->orWhere('kode_guru5', '=', Auth::user()->kode)->get();
+
+            $level = array();
+            foreach ($courses as $key => $value) {
+               $level[] = $value->level;
+            }
+
+            $data['classes'] = Classes::whereIn('level', array_unique($level))->orderBy('id','desc')->paginate(10);
+        }
+        
         return view('classes.list',$data);
     }
 

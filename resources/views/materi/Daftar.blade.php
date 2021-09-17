@@ -1,22 +1,31 @@
 @extends('materi.view')
 @section('content')
+@if(Auth::user()->role == 'Guru')
+<span class="navbar-right panel-button-tab-right">
+    <a class="btn btn-md btn-default" href="{{ route('classes.create', $id) }}" >Add</a>
+</span>
+@endif
 <br><br>
 <div class="row">
-    <div class="col-12">
+    <div class="col-16">
         <table class="table table-bordered" id="komponen">
             <thead>
                 <tr>
+                    @if(Auth::user()->role == 'Guru')
+                    <th style="text-align:center;">Mata Pelajaran</th>
+                    @endif
                     <th style="text-align:center;">Materi</th>
                     <th style="text-align:center;">Latihan</th>
-                    <th style="text-align:center;">Deadline Latihan</th>
                     <th style="text-align:center;">Ulangan Harian</th>
-                    <th style="text-align:center;">Deadline UH</th>
                     <th style="text-align:center;">Remedial</th>
-                    <th style="text-align:center;">Deadline Remedial</th>
+                    @if(Auth::user()->role == 'Guru')
+                    <th style="text-align:center;" colspan="2"></th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
-            @foreach($subjects as $subject)
+            @if(Auth::user()->role == 'Siswa')    
+            @foreach($data['subjects'] as $subject)
             <tr>
                 <td>
                     <a href="{{ Storage::url('uploads/'.$subject->materi) }}">{{ $subject->materi }}</a>
@@ -35,6 +44,48 @@
                 <td>{{ $subject->start_remidi.' s/d '.$subject->deadline_remidi }}</td>
             </tr>
             @endforeach
+            @else
+            @foreach($data['subjects'] as $subject)
+                @foreach($subject->ListMateri as $materi)
+            <tr>
+                <td>
+                   {{ $subject->name }}</a>
+                </td>
+                <td>
+                    <a href="{{ Storage::url('uploads/'.$materi->materi) }}">{{ $materi->materi }}</a>
+                </td>
+                <td>
+                    <span>
+                    Deadline : {{ $materi->start_latihan.' s/d '.$materi->deadline_latihan }}</span>
+                    <br>
+                    <a href="{{ Storage::url('uploads/'.$materi->latihan) }}">{{ $materi->latihan }}</a>
+                </td>
+                <td>
+                    <span>
+                    Deadline : {{$materi->start_uh.' s/d '.$materi->deadline_uh }}</span>
+                    <br>
+                    <a href="{{ Storage::url('uploads/'.$materi->ulangan_harian) }}">{{ $materi->ulangan_harian }}</a>
+                </td>
+                <td>
+                    <span>
+                    Deadline : {{ $materi->start_remidi.' s/d '.$materi->deadline_remidi }}</span>
+                    <br>
+                    <a href="{{ Storage::url('uploads/'.$materi->remidial) }}">{{ $materi->remidial }}</a>
+                </td>
+                <td>
+                    <a href="{{ route('classes.edit',$materi->id)}}" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <form action="{{ route('classes.destroy', $materi->id)}}" method="post">
+                    {{ csrf_field() }}
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+            @endforeach
+            @endif
             </tbody>
         </table>
 </div> 

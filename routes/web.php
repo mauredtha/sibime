@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('courses', 'CoursesController');
     Route::get('komponen/{id}', 'CoursesController@showKomponen')->name('komponen');
+    Route::get('mapel', 'CoursesController@showMapelGuru')->name('mapel');
 
     Route::resource('subjects', 'MaterisController');
     Route::get('list_materi/{id}', 'MaterisController@listMateri')->name('list_materi');

@@ -6,6 +6,7 @@ use App\CourseDetail;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 use Redirect;
 
 class CoursesController extends Controller
@@ -218,5 +219,12 @@ class CoursesController extends Controller
 
         $compactData=array('data');
         return View::make('course.komponen', compact($compactData));
+    }
+
+    public function showMapelGuru(){
+
+        $data['courses'] = Courses::where('kode_guru', '=', Auth::user()->kode)->orWhere('kode_guru2', '=', Auth::user()->kode)->orWhere('kode_guru3', '=', Auth::user()->kode)->orWhere('kode_guru4', '=', Auth::user()->kode)->orWhere('kode_guru5', '=', Auth::user()->kode)->get();
+
+        return view('course.mapel',$data);
     }
 }
