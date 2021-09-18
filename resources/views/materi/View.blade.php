@@ -45,9 +45,10 @@
 			@if(Auth::user()->role == 'Guru')
 			<li class="active"><a href="{{ route('classes.index') }}"><em class="fa fa-calendar">&nbsp;</em> Kelas</a></li>
 			<li><a href="{{ route('mapel') }}"><em class="fa fa-bar-chart">&nbsp;</em> Mata Pelajaran</a></li>
+			@else
+			<li><a href="{{ route('list_nilai') }}"><em class="fa fa-bar-chart">&nbsp;</em> Nilai</a></li>
+            <li><a href="{{ route('absensi') }}"><em class="fa fa-bar-chart">&nbsp;</em> Absensi</a></li>
 			@endif
-			<li><a href="{{ route('workbooks.index') }}"><em class="fa fa-bar-chart">&nbsp;</em> Nilai</a></li>
-            <li><a href="{{ route('workbooks.index') }}"><em class="fa fa-bar-chart">&nbsp;</em> Absensi</a></li>
 			<li><a href="{{ route('logout') }}"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
@@ -58,6 +59,11 @@
 				<li><a href="{{ route('home') }}">
 					<em class="fa fa-home"></em>
 				</a></li>
+				@if(Auth::user()->role == 'Guru')
+				<li><a href="{{ route('classes.index') }}">
+					Kelas
+				</a></li>
+				@endif
 			</ol>
 		</div><!--/.row-->
 			

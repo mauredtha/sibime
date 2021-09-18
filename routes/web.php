@@ -36,12 +36,19 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('subjects', 'MaterisController');
     Route::get('list_materi/{id}', 'MaterisController@listMateri')->name('list_materi');
+    Route::get('add_materi_class/{id}', 'MaterisController@create')->name('add_materi_class');
+    Route::get('all_materi/{id}', 'MaterisController@AllMateri')->name('all_materi');
 
     Route::resource('grades', 'NilaisController');
     Route::get('list_nilai', 'NilaisController@listNilai')->name('list_nilai');
+    Route::get('list_nilai_class/{id}', 'NilaisController@index')->name('list_nilai_class');
+    Route::get('add_nilai_class/{id}', 'NilaisController@create')->name('add_nilai_class');
 
+    Route::resource('absences', 'AbsencesController');
     Route::get('absensi', 'AbsencesController@absensi')->name('absensi');
     Route::get('absensi_detail/{id}', 'AbsencesController@absensi_detail')->name('absensi_detail');
+    Route::get('absensi_class/{id}', 'AbsencesController@index')->name('absensi_class');
+    Route::get('add_absensi_class/{id}', 'AbsencesController@create')->name('add_absensi_class');
 
     Route::resource('users', 'AuthController');
 });

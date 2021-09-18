@@ -24,7 +24,11 @@
             <?php }?>
             <tr>
                 <td>
-                    <a href="{{ route('list_materi', $data['course_info']['id']) }}">Materi Belajar</a>
+                    @if(Auth::user()->role == 'Guru')
+                    <a href="{{ route('all_materi', $data['course_info']['id']) }}">
+                    @else    
+                    <a href="{{ route('list_materi', $data['course_info']['id']) }}">
+                    @endif Materi Belajar</a>
                 </td>
             </tr>
             </tbody>

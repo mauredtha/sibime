@@ -70,7 +70,7 @@
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-book color-blue"></em>
 							<div class="large">{{$materi}}</div>
-							<div class="text-muted"><a href="{{ route('buku_kerja_satu') }}">Materi</a></div>
+							<div class="text-muted"><a href="">Materi</a></div>
 						</div>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 					<div class="panel panel-blue panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-book color-orange"></em>
 							<div class="large">{{$latihan}}</div>
-							<div class="text-muted"><a href="{{ route('buku_kerja_dua') }}">Latihan</a></div>
+							<div class="text-muted"><a href="">Latihan</a></div>
 						</div>
 					</div>
 				</div>
@@ -86,7 +86,7 @@
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-book color-teal"></em>
 							<div class="large">{{$uh}}</div>
-							<div class="text-muted"><a href="{{ route('buku_kerja_tiga') }}">Ulangan Harian</a></div>
+							<div class="text-muted"><a href="">Ulangan Harian</a></div>
 						</div>
 					</div>
 				</div>
@@ -94,7 +94,7 @@
 					<div class="panel panel-red panel-widget ">
 						<div class="row no-padding"><em class="fa fa-xl fa-book color-red"></em>
 							<div class="large">{{$remed}}</div>
-							<div class="text-muted"><a href="{{ route('buku_kerja_empat') }}">Remed</a></div>
+							<div class="text-muted"><a href="">Remed</a></div>
 						</div>
 					</div>
 				</div>

@@ -36,9 +36,9 @@
             </form>
             </td>
             @else
-            <td><a href="{{ route('classes.edit',$class->id)}}" class="btn btn-primary">Absensi</a></td>
+            <td><a href="{{ route('absensi_class',$class->id)}}" class="btn btn-primary">Absensi</a></td>
             <td><a href="{{ route('list_materi',$class->id)}}" class="btn btn-primary">Materi</a></td>
-            <td><a href="{{ route('classes.edit',$class->id)}}" class="btn btn-primary">Nilai</a></td>
+            <td><a href="{{ route('list_nilai_class',$class->id)}}" class="btn btn-primary">Nilai</a></td>
             @endif
             </tr>
 @endforeach

@@ -2,8 +2,9 @@
 @section('content')
 @if(Auth::user()->role == 'Guru')
 <span class="navbar-right panel-button-tab-right">
-    <a class="btn btn-md btn-default" href="{{ route('classes.create', $id) }}" >Add</a>
+    <a class="btn btn-md btn-default" href="{{ route('add_materi_class', $id) }}" >Add</a>
 </span>
+Kelas {{$class_name[0]->name}} / Tahun Ajaran {{$class_name[0]->tahun_ajaran}}
 @endif
 <br><br>
 <div class="row">
@@ -13,13 +14,19 @@
                 <tr>
                     @if(Auth::user()->role == 'Guru')
                     <th style="text-align:center;">Mata Pelajaran</th>
-                    @endif
                     <th style="text-align:center;">Materi</th>
                     <th style="text-align:center;">Latihan</th>
                     <th style="text-align:center;">Ulangan Harian</th>
                     <th style="text-align:center;">Remedial</th>
-                    @if(Auth::user()->role == 'Guru')
                     <th style="text-align:center;" colspan="2"></th>
+                    @else
+                    <th style="text-align:center;">Materi</th>
+                    <th style="text-align:center;">Latihan</th>
+                    <th style="text-align:center;">Deadline Latihan</th>
+                    <th style="text-align:center;">Ulangan Harian</th>
+                    <th style="text-align:center;">Deadline UH</th>
+                    <th style="text-align:center;">Remedial</th>
+                    <th style="text-align:center;">Deadline Remedial</th>
                     @endif
                 </tr>
             </thead>
@@ -73,10 +80,10 @@
                     <a href="{{ Storage::url('uploads/'.$materi->remidial) }}">{{ $materi->remidial }}</a>
                 </td>
                 <td>
-                    <a href="{{ route('classes.edit',$materi->id)}}" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('subjects.edit',$materi->id)}}" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-                    <form action="{{ route('classes.destroy', $materi->id)}}" method="post">
+                    <form action="{{ route('subjects.destroy', $materi->id)}}" method="post">
                     {{ csrf_field() }}
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Delete</button>
