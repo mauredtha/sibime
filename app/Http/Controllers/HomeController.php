@@ -13,13 +13,20 @@ use App\Courses;
 use App\Classes;
 use App\Materis;
 use App\Nilais;
+use App\User;
 
 class HomeController extends Controller
 {
     public function index()
     {
         if(Auth::user()->role == 'Admin'){
-            return view('admin');
+            $kelas = Classes::count();
+            $mapel = Courses::count();
+            $teacher = User::where('role', '=', 'Guru')->count();
+            $siswa = User::where('role', '=', 'Siswa')->count();
+            $workbook = BukuKerja::count();
+
+            return view('admin', compact('kelas','mapel','teacher','siswa','workbook'));
         }elseif (Auth::user()->role == 'Guru') {
             $buku_kerja_i = BukuKerja::where('kategori','Buku Kerja I')->count();
             $buku_kerja_ii = BukuKerja::where('kategori','Buku Kerja II')->count();

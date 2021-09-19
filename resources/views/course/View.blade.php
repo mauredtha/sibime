@@ -48,9 +48,8 @@
 			@else
 			<li><a href="{{ route('classes.index') }}"><em class="fa fa-calendar">&nbsp;</em> Kelas</a></li>
 			<li><a href="{{ route('courses.index') }}"><em class="fa fa-bar-chart">&nbsp;</em> Mata Pelajaran</a></li>
-			<li><a href="{{ route('logout') }}"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 			@endif
-			
+			<li><a href="{{ route('logout') }}"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
